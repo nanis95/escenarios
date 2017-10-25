@@ -19,10 +19,14 @@ public class EscAdapter extends RecyclerView.Adapter <EscAdapter.AdapterViewHold
 
     public static class AdapterViewHolder extends RecyclerView.ViewHolder{
         public TextView nombre;
+        public TextView municipio;
+        public ImageView imagen;
 
         public AdapterViewHolder(View v){
             super(v);
             nombre = (TextView) v.findViewById(R.id.nombre);
+            municipio = (TextView) v.findViewById(R.id.municipio);
+            imagen = (ImageView) v.findViewById(R.id.imagen);
         }
     }
 
@@ -45,5 +49,7 @@ public class EscAdapter extends RecyclerView.Adapter <EscAdapter.AdapterViewHold
     @Override
     public void onBindViewHolder(AdapterViewHolder viewHolder, int i) {
         viewHolder.nombre.setText(items.get(i).getNombre());
+        viewHolder.municipio.setText(items.get(i).getMunicipio());
+        Picasso.with(this).load(items.get(i).getUrlimagen()).into(viewHolder.imagen);
     }
 }
